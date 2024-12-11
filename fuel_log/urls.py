@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +26,5 @@ urlpatterns = [
                                      redirect_authenticated_user=True), name='login'),
     path('logout/', LogoutView.as_view(next_page='fuel:index'), name='logout')
 ]
+
+urlpatterns += staticfiles_urlpatterns()
